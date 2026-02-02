@@ -1,0 +1,9 @@
+# API server
+fastapi
+uvicorn[standard]
+langchain 
+
+# Utils
+python-dotenv
+pydantic
+requests
