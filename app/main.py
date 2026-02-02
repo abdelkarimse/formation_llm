@@ -1,10 +1,26 @@
 # app/main.py
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from api import routes_llm, routes_health
 from utils.logger import logger 
 
 app = FastAPI(title="LLM Server")
 
+origins = [
+    "http://localhost",            # frontend local
+    "http://localhost:3000",       # si React est sur 3000
+    "http://127.0.0.1:3000",      # alternative
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,          # domains autorisés
+    allow_credentials=True,
+    allow_methods=["*"],            # GET, POST, PUT, DELETE ...
+    allow_headers=["*"],            # Headers autorisés
+)
+
+# --- Routers ---
 app.include_router(routes_llm.router, prefix="/llm", tags=["LLM"])
 app.include_router(routes_health.router, prefix="/health", tags=["Health"])
 
