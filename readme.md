@@ -94,6 +94,11 @@ This will start the FastAPI application. You can access the API endpoints:
 ```bash
 cd docker
 docker-compose up -d
+ollama run qwen3:4b --keep_alive=-1   
 ```
 
 This will start Ollama and your app in Docker containers.
+
+
+
+Repository of Llm 2x faster with 70% less VRAM! [here](https://github.com/unslothai/unsloth?tab=readme-ov-file):

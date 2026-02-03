@@ -10,6 +10,7 @@ origins = [
     "http://localhost",            # frontend local
     "http://localhost:3000",       # si React est sur 3000
     "http://127.0.0.1:3000",      # alternative
+    "http://192.168.42.131:3000",      # network
 ]
 
 app.add_middleware(

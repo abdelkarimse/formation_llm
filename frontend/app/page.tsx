@@ -9,7 +9,7 @@ interface Message {
   content: string;
 }
 
-type Provider = 'ollama' | 'nvidia' | 'ollamawithrag' | 'nvidiawithrag';
+type Provider = 'ollama' | 'nvidia' | 'ragwithollama' | 'ragwithnvidia';
 
 export default function Home() {
   const [messages, setMessages] = useState<Message[]>([
@@ -34,7 +34,7 @@ export default function Home() {
     setIsLoading(true);
 
     try {
-    const { data } = await axios.post('http://127.0.0.1:5000/chat', { 
+    const { data } = await axios.post('http://127.0.0.1:8000/llm/ask', { 
         prompt: input,
         model: provider 
       });
@@ -69,8 +69,8 @@ export default function Home() {
             >
               <option value="ollama">Ollama</option>
               <option value="nvidia">NVIDIA</option>
-              <option value="ollamawithrag">Ollama + RAG</option>
-              <option value="nvidiawithrag">NVIDIA + RAG</option>
+              <option value="ragwithollama">Ollama + RAG</option>
+              <option value="ragwithnvidia">NVIDIA + RAG</option>
             </select>
           </div>
         </header>
